@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // components
 
@@ -24,11 +24,11 @@ export default function Auth() {
                 "url(" + require("assets/img/register_bg_2.png").default + ")",
             }}
           ></div>
-          <Switch>
-            <Route path="/auth/login" exact component={Login} />
-            <Route path="/auth/register" exact component={Register} />
-            <Redirect from="/auth" to="/auth/login" />
-          </Switch>
+          <Routes>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="*" element={<Navigate to="login" />} />
+          </Routes>
           <FooterSmall absolute />
         </section>
       </main>
